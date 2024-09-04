@@ -32,13 +32,8 @@ object daenerys {
     }
 
 
-    method ataque() {
-        return artefactos.sum{ artefacto => artefacto.ataque() }
-
-    }
-    method defensa() {
-      return artefactos.sum{ artefacto => artefacto.defensa() }
-    }
+    method ataque() = artefactos.sum{ artefacto => artefacto.ataque() }
+    method defensa() = artefactos.sum{ artefacto => artefacto.defensa() }
 
 }
 

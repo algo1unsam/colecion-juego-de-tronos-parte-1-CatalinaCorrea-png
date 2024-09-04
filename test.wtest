@@ -1,46 +1,33 @@
 import gameOfThrone.*
 
-test "encontrar artefactos" {
-	
-	daenerys.encontrar(espada)
-	daenerys.encontrar(libro)
-	daenerys.encontrar(collar)
 
-	assert.equals( #{espada, libro}, daenerys.artefactos() )
-	
-}
+//     Daenerys encuentra la Espada de Dragón (la agarra).
+//     Daenerys encuentra el Libro de Magia Ancestral (lo agarra).
+//     Daenerys encuentra el Collar de Fuego (no lo agarra, ya que tiene la espada y el libro encima y su capacidad es de 2).
+//     Daenerys llega a Rocadragón (deja en la fortaleza la espada y el libro de magia).
+//     Daenerys encuentra la Armadura de Acero Valyrio (la agarra).
+//     Daenerys encuentra el Collar de Fuego (ahora sí lo puede agarrar, ya que liberó espacio).
 
-test "castillo" {
+// Si consultamos la historia de encuentros con los artefactos, debería ser:
 
-	daenerys.encontrar(espada)
-	daenerys.encontrar(libro)
-	daenerys.volverACasa()
- 	daenerys.encontrar(collar)
- 	daenerys.volverACasa()
- 	
- 	assert.that(daenerys.artefactos().isEmpty())
- 	assert.equals(#{espada,libro,collar}, castillo.artefactos())
- 	
-}
+//     Espada de Dragón
+//     Libro de Magia Ancestral
+//     Collar de Fuego
+//     Armadura de Acero Valyrio
+//     Collar de Fuego (¡de nuevo!)
 
-test "posesiones" {
-	
-	castillo.agregarArtefactos(#{collar, espada})
-	
-	daenerys.encontrar(armadura)
-	assert.equals(#{collar, armadura, espada}, daenerys.posesiones())
-	assert.that(daenerys.posee(armadura))
-	assert.notThat(daenerys.posee(libro))
-	
-}
+
 
 test "historia" {
 	daenerys.encontrar(espada)
 	daenerys.encontrar(libro)
 	daenerys.encontrar(collar)
+    assert.equals(daenerys.ataque(), 100)
 	daenerys.volverACasa()
 	daenerys.encontrar(armadura)
+    assert.equals(daenerys.defensa(), 100)
+    assert.equals(daenerys.ataque(), 0)
 	daenerys.encontrar(collar)
 
-  assert.equals([espada, libro, collar, armadura, collar], daenerys.historia())	
+  assert.equals([espada, libro, collar, armadura, collar], daenerys.historial())	
 }

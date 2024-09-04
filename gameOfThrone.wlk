@@ -1,6 +1,5 @@
 object daenerys {
     const property artefactos = #{}
-    var property fortaleza = []
     const property historial = []
     var property xp = 0
 
@@ -18,9 +17,8 @@ object daenerys {
     }
 
     method volverACasa() {
-        fortaleza.addAll(artefactos)
+        castillo.guardarArtefactos()
         self.vaciarMochila()
-
     }
 
     method historial(artefacto) {
@@ -35,6 +33,14 @@ object daenerys {
     method ataque() = artefactos.sum{ artefacto => artefacto.ataque() }
     method defensa() = artefactos.sum{ artefacto => artefacto.defensa() }
 
+}
+
+object castillo {
+    var property fortaleza = []
+
+    method guardarArtefactos() {
+      fortaleza.addAll(daenerys.artefactos())
+    }
 }
 
 object espada {

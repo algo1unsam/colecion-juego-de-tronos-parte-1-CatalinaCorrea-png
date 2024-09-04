@@ -3,8 +3,6 @@ object daenerys {
     var property fortaleza = []
     const property historial = []
     var property xp = 0
-    var property defensa = 0
-    var property ataque = 0
 
 
     method encontrar(artefacto) {
@@ -35,14 +33,12 @@ object daenerys {
 
 
     method ataque() {
-        ataque = artefactos.sum{ artefacto => artefacto.ataque() }
-        return ataque 
+        return artefactos.sum{ artefacto => artefacto.ataque() }
+
     }
     method defensa() {
-        defensa = artefactos.sum{ artefacto => artefacto.defensa() }
-      return defensa
+      return artefactos.sum{ artefacto => artefacto.defensa() }
     }
-
 
 }
 
